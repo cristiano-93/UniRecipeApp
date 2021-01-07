@@ -11,4 +11,5 @@ exports.list = async (req, res) => {
             message:`error rendering page`,
         });
     }
+    
 }

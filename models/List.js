@@ -4,9 +4,7 @@ const listSchema = new Schema(
     {
         name: String,
         minutes: Number,
-        submitted: Date,
         tags: String,
-        nutrituion: String,
         n_steps: Number,
         steps: String,
         description: String,
