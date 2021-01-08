@@ -31,11 +31,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <% recipe.forEach(recipe=> {
 
-                    <% recipe.forEach(recipe=> {
-
-                        %>
-                        <tr >
+                            %>
                             <td>
                                 <%= recipe.name %>
                             </td>
@@ -49,10 +48,11 @@
                                 <%= recipe.n_ingredients %>
                             </td>
                             <td class="text-center">
-                                <a href="/recipe/view/<%= recipe.id %>" class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> View</a>
+                                <a href="/recipe/view/<%= recipe.id %>" class='btn btn-info btn-xs'><span
+                                        class="glyphicon glyphicon-edit"></span> View</a>
                             </td>
-                        </tr>
-                        <% }); %>
+                    </tr>
+                    <% }); %>
 
                 </tbody>
 
