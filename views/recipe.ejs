@@ -18,7 +18,7 @@
             <div class="row justify-content-md-center">
                 <div class="col-md-auto">
                     <h1>
-                        recipe name: <%=recipe.name%>
+                        <%=recipe.name%>
                     </h1>
                 </div>
             </div>
@@ -31,12 +31,11 @@
                 <div class="col-3">
                     <h2>Ingredient List: </h2>
                     <ul class="list-unstyled">
-                        <% forEach(steps s in recipes){
-                            %>
-                            <li>
-                                <%%>
+                        <% JSON.parse(recipe["ingredients"].split("'").join("\"")).forEach(ingredient=> {
+                            %><li>-
+                                <%=ingredient%>
                             </li>
-                            <% }; %>
+                            <% });%>
                     </ul>
 
                 </div>
@@ -46,13 +45,13 @@
                 </div>
                 <div class="col-8">
                     <h2>Steps and preparation</h2>
-                    <ul>
-                        <% for (const step of recipe.steps) { %>
-                            <li>
+                    <ol>
+                        <% JSON.parse(recipe["steps"].split("'").join("\"")).forEach(step=> {
+                            %><li>
                                 <%=step%>
                             </li>
-                            <% }; %>
-                        </ul>
+                            <% });%>
+                    </ol>
                 </div>
             </div>
         </div>
