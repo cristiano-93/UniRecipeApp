@@ -9,7 +9,7 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
-        tr[data-href]{
+        tr[data-href] {
             cursor: pointer;
         }
     </style>
@@ -35,7 +35,7 @@
                     <% recipe.forEach(recipe=> {
 
                         %>
-                        <tr data-href="http://www.google.com">
+                        <tr >
                             <td>
                                 <%= recipe.name %>
                             </td>
@@ -48,6 +48,9 @@
                             <td>
                                 <%= recipe.n_ingredients %>
                             </td>
+                            <td class="text-center">
+                                <a href="/recipe/view/<%= recipe.id %>" class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> View</a>
+                            </td>
                         </tr>
                         <% }); %>
 
@@ -58,13 +61,14 @@
 
 
         </div>
-        <script>
+        <!-- <script>
+            //data-href="http://www.google.com"
             $(document).ready(function () {
                 $(document.body).on("click", "tr[data-href]", function () {
                     window.location.href = this.dataset.href;
                 });
             });
-        </script>
+        </script> -->
 </body>
 
 </html>

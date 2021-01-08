@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const recipeSchema = new Schema(
     {
-        name: {type: String, required: [true, 'Name is required']},
-        minutes: {type: Number, default: 0},
-        tags: {type: String},                   //should i keep tags??
-        n_steps: {type: Number, default: 0},
-        n_ingredients: {type: Number, default: 0},
+        name: {type: String},
+        description: {type: String},
+        ingredients: {type: String},
+        steps: {type: String}
     },
     { timestamps: true }
 );

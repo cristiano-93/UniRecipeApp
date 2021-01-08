@@ -33,14 +33,4 @@ exports.update = async (req, res) => {
     }
 };
 
-exports.delete = async (req, res) => {
-    const id = req.params.id;
-    try {
-        await DataTransfer.findByIdAndRemove(id);
-        res.redirect("/recipes/?message=recipe has been deleted");
-    } catch (e) {
-        res.status(404).send({
-            message: `could not delete record ${id}.`,
-        });
-    }
-}
+

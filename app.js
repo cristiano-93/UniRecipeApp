@@ -12,7 +12,8 @@ app.set("view engine", "ejs");
 
 
 //controllers
-const homeController = require("./controllers/home")
+const homeController = require("./controllers/home");
+const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 
 //connecting to the database
@@ -33,7 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(expressSession({ secret: 'web app', cookie: { expires: new Date(253402300000000) } }))
+//app.use(expressSession({ secret: 'web app', cookie: { expires: new Date(253402300000000) } }))
 
 
 
@@ -43,7 +44,9 @@ app.get("/", homeController.list)
 app.get("/recipeList", recipeListController.list);
 //app.get("/recipeList/delete/:id", recipeListController.delete);
 
-//app.get("/recipe", recipeController.list);
+app.get("/recipe", recipeController.view);
+app.get("/recipe/view/:id", recipeController.view);
+app.post("/recipe/view/:id", recipeController.view);
 
 
 
