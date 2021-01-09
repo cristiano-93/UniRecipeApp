@@ -1,3 +1,4 @@
+const Recipe = require("../models/Recipe");
 const RecipeList = require("../models/Recipe");
 
 exports.list = async (req, res) => {
@@ -6,18 +7,6 @@ exports.list = async (req, res) => {
         res.render("recipeList", { recipe: recipe });
     } catch (e) {
         res.status(404).send({ message: "could not list recipes" });
-    }
-};
-
-exports.create = async (req, res) => {
-    let recipe = new RecipeList({ name: req.body.name });
-    try {
-        await recipe.save();
-        res.redirect('/recipes/?message=recipe has been created')
-    } catch (e) {
-        return res.status(400).send({
-            message: JSON.parse(e),
-        });
     }
 };
 
@@ -33,4 +22,15 @@ exports.update = async (req, res) => {
     }
 };
 
-
+exports.delete = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const recipe = await Recipe.findByIdAndRemove(id);
+        //await DataTransfer.findByIdAndRemove(id);
+        res.redirect("/recipeList/?message=recipe has been deleted");
+    } catch (e) {
+        res.status(404).send({
+            message: `could not delete record ${id}.`,
+        });
+    }
+};
