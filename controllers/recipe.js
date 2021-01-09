@@ -1,5 +1,8 @@
 const Recipe = require("../models/Recipe");
 const bodyParser = require("body-parser");
+const Tag = require("../models/Tag");
+const { db } = require("../models/Tag");
+
 
 exports.view = async (req, res) => {
         const id = req.params.id;
@@ -39,3 +42,14 @@ exports.create = async (req, res) => {
     };
 };
 
+exports.tags = async (req, res) => {
+    try {
+        db.collection("recipes").aggregate([
+            {$group: {_id: "$tags"}},
+            {$project: {name:"$_id","_id":0}},
+            {$out:"tags"}
+        ])
+    } catch (e) {
+        
+    }
+}
