@@ -13,16 +13,10 @@ exports.list = async (req, res) => {
 exports.update = async (req, res) => {
     const id = req.params.id;
     try {
-        const tags = await Tag.find({});
-        const steps = await Step.find({});
-        const ingredients = await Ingredient.find({});
-        const recipe = await Recipes.findById(id);
+        const recipe = await Recipe.findById(id);
         if (!recipe) throw Error('couldnt find recipe');
         res.render('update-recipe', {
             recipe: recipe,
-            tags: tags,
-            steps: steps,
-            ingredients: ingredients,
             error: {}
         });
     } catch (e) {
@@ -32,7 +26,7 @@ exports.update = async (req, res) => {
             return;
         }
         res.status(404).send({
-            message: `could not find recipe ${id}.`,
+            message: `could not find the recipe ${id}.`,
         });
     }
 };
@@ -41,7 +35,6 @@ exports.delete = async (req, res) => {
     const id = req.params.id;
     try {
         const recipe = await Recipe.findByIdAndRemove(id);
-        //await DataTransfer.findByIdAndRemove(id);
         res.redirect("/recipeList/?message=recipe has been deleted");
     } catch (e) {
         res.status(404).send({

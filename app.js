@@ -45,6 +45,9 @@ app.get("/recipeList", recipeListController.list);
 app.get("/recipeList/delete/:id", recipeListController.delete);
 
 app.get("/recipe/view/:id", recipeController.view);
+app.get("/recipe/update/:id", recipeController.edit);
+app.post("/recipe/update/:id", recipeController.update);
+
 
 app.get("/create-recipe", (req, res) => {
     res.render("create-recipe", { errors: {} });
@@ -53,10 +56,7 @@ app.post("/create-recipe", recipeController.create);
 
 
 
-app.get("/update-recipe/: id", (req, res) => {
-    res.render("update-recipe", { errors: {} });
-});
-app.post("/update-recipe", recipeListController.update);
+
 
 
 app.listen(WEB_PORT, () => {
