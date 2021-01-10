@@ -12,7 +12,7 @@
 <body>
     <%- include('common/header'); -%>
     <div class="container" style="padding: 20px;">
-            <h1 class="text-center">Create a Recipe</h1>
+            <h1 class="text-center">Update a Recipe</h1>
             <form action="/create-recipe" method="post">
                 <table class="table" style="margin-left: auto; width: 80% !important;">
                     <tbody>
@@ -20,51 +20,51 @@
                             <td class="col-4">
                                 <h4>Recipe name: </h4>
                             </td>
-                            <td class="col-6"><input type="text" class="form-control" id="name" name="name"></td>
+                            <td class="col-6"><input type="text" class="form-control" id="name" name="name"  placeholder="<%=recipe.name%>"></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Time needed: </h4>
                             </td>
-                            <td class="col-6"><input type="number" class="form-control" id="n_minutes" name="n_minutes"></td>
+                            <td class="col-6"><input type="number" class="form-control" id="n_minutes" name="n_minutes" placeholder="<%=recipe.n_minutes%>"></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Number of steps: </h4>
                             </td>
-                            <td class="col-6"><input type="number" class="form-control" id="n_steps" name="n_steps"></td>
+                            <td class="col-6"><input type="number" class="form-control" id="n_steps" name="n_steps" placeholder="<%=recipe.n_steps%>"></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Number of ingredients: </h4>
                             </td>
-                            <td class="col-6"><input type="number" class="form-control" id="n_ingredients" name="n_ingredients"></td>
+                            <td class="col-6"><input type="number" class="form-control" id="n_ingredients" name="n_ingredients" placeholder="<%=recipe.n_ingredients%>"></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Tags: </h4>
                             </td>
-                            <td class="col-6"><input type="text" class="form-control" id="tags" name="tags" placeholder="seperate using a comma>,< "></td>
+                            <td class="col-6"><input type="text" class="form-control" id="tags" name="tags" placeholder=""></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Ingredients: </h4>
                             </td>
-                            <td class="col-6"><textarea class="form-control" id="ingredients" name="ingredients" placeholder="seperate using a comma>,< "
+                            <td class="col-6"><textarea class="form-control" id="ingredients" name="ingredients" placeholder=""
                                 rows="4"></textarea></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Description: </h4>
                             </td>
-                            <td class="col-6"><textarea class="form-control" id="description" name="description"
+                            <td class="col-6"><textarea class="form-control" id="description" name="description" placeholder="<%=recipe.description%>"
                                     rows="6"></textarea></td>
                         </tr>
                         <tr class="row justify-content-start">
                             <td class="col-4">
                                 <h4>Steps and preparation: </h4>
                             </td>
-                            <td class="col-6"><textarea class="form-control" id="steps" name="steps" placeholder="seperate using a comma>,< "
+                            <td class="col-6"><textarea class="form-control" id="steps" name="steps" placeholder=""
                                     rows="6"></textarea></td>
                         </tr>
                     </tbody>
@@ -73,5 +73,3 @@
         </form>
     </div>
 </body>
-
-</html>

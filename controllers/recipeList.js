@@ -13,11 +13,26 @@ exports.list = async (req, res) => {
 exports.update = async (req, res) => {
     const id = req.params.id;
     try {
-        const recipe = await Recipes.updateOne({ _id: id }, req.body);
-        res.redirect('/recipes/?message=recipe has been updated');
+        const tags = await Tag.find({});
+        const steps = await Step.find({});
+        const ingredients = await Ingredient.find({});
+        const recipe = await Recipes.findById(id);
+        if (!recipe) throw Error('couldnt find recipe');
+        res.render('update-recipe', {
+            recipe: recipe,
+            tags: tags,
+            steps: steps,
+            ingredients: ingredients,
+            error: {}
+        });
     } catch (e) {
+        console.log(e);
+        if (e.errors) {
+            res.render('update-recipe', { errors: e.errors })
+            return;
+        }
         res.status(404).send({
-            message: `could find taster ${id}.`,
+            message: `could not find recipe ${id}.`,
         });
     }
 };

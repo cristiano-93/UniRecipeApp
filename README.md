@@ -22,5 +22,7 @@
 - npm install nodemon --save-dev
 - npm install express-session
 - mongoimport --db recipes --collection recipes --file 15minRecipes.json --jsonArray
-- db.recipes.update({}, {$unset: {id:1}},{multi: true});   this one to remove id field from collection
+- db.recipes.update({}, {$unset: {id:1}},{multi: true});                                        this one to remove id field from collection
+- db.recipes.aggregate([{$group: {_id: "$tags"}},{$project: {name: "$_id", "_id" : 0}},])       aggregation command
+- db.collection("tags").aggregate([{$unwind: "$tags"},{$group: {_id: "$tags"}},{$project: {name: "$_id", "_id" : 0}},]).toArray()
 - 

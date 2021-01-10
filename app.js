@@ -44,16 +44,19 @@ app.get("/", homeController.list)
 app.get("/recipeList", recipeListController.list);
 app.get("/recipeList/delete/:id", recipeListController.delete);
 
-app.get("/recipe", recipeController.view);
 app.get("/recipe/view/:id", recipeController.view);
-app.post("/recipe/view/:id", recipeController.view);
 
 app.get("/create-recipe", (req, res) => {
     res.render("create-recipe", { errors: {} });
-  });
-app.post("/create-recipe",recipeController.create);
+});
+app.post("/create-recipe", recipeController.create);
 
 
+
+app.get("/update-recipe/: id", (req, res) => {
+    res.render("update-recipe", { errors: {} });
+});
+app.post("/update-recipe", recipeListController.update);
 
 
 app.listen(WEB_PORT, () => {
