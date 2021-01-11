@@ -8,6 +8,7 @@ const expressSession = require("express-session");
 const { WEB_PORT, MONGODB_URI } = process.env;
 const path = require("path");
 const app = express();
+const User = require("./models/User");
 app.set("view engine", "ejs");
 
 
@@ -15,6 +16,7 @@ app.set("view engine", "ejs");
 const homeController = require("./controllers/home");
 const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
+const userController = require("./controllers/user");
 
 //connecting to the database
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -33,13 +35,33 @@ mongoose.connection.on("error", (err) => {
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressSession({ secret: 'web app', cookie: { expires: new Date(253402300000000) } }));
 
-//app.use(expressSession({ secret: 'web app', cookie: { expires: new Date(253402300000000) } }))
+app.use("*", async (req, res, next) => {
+    global.user = false;
+    if (req.session.userID && !global.user) {
+        const user = await User.findById(req.session.userID);
+        global.user = user;
+    }
+    next();
+})
+
+const authMiddleware = async (req, res, next) => {
+    const user = await User.findById(req.session.userID);
+    if (!user) {
+        return res.redirect('/');
+    }
+    next()
+}
+
 
 
 
 // setting up the pages
-app.get("/", homeController.list)
+
+
+
+app.get("/", homeController.list);
 
 app.get("/recipeList", recipeListController.list);
 app.get("/recipeList/delete/:id", recipeListController.delete);
@@ -54,14 +76,30 @@ app.get("/create-recipe", (req, res) => {
 });
 app.post("/create-recipe", recipeController.create);
 
+//user login/registration
 
+app.get("/register", (req, res) => {
+    res.render('create-user', { errors: {} })
+});
+app.post("/register", userController.create);
+
+app.get("/login", (req, res) => {
+    res.render('login-user', { errors: {} })
+});
+app.post("/login", userController.login);
+
+app.get("/logout", async (req, res) => {
+    req.session.destroy();
+    global.user = false;
+    res.redirect('/');
+});
 
 
 
 
 app.listen(WEB_PORT, () => {
     console.log(
-        `Example app listening at http://localhost:${WEB_PORT}`,
+        `Web App listening at http://localhost:${WEB_PORT}`,
         chalk.green("✓")
     );
 });

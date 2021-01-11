@@ -21,6 +21,7 @@
 - npm install ejs
 - npm install nodemon --save-dev
 - npm install express-session
+- npm install bcrypt
 - mongoimport --db recipes --collection recipes --file 15minRecipes.json --jsonArray
 - db.recipes.update({}, {$unset: {id:1}},{multi: true});                                        this one to remove id field from collection
 - db.recipes.aggregate([{$group: {_id: "$tags"}},{$project: {name: "$_id", "_id" : 0}},])       aggregation command

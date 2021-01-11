@@ -4,6 +4,7 @@
   "description": "- Install the dependencies -  `npm install`\r - Rename .env.example to .env. \r - If this is your first time getting started then run the seeder - `node seeder`\r - Run the project in development mode - `npm run dev`",
   "main": "app.js",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
