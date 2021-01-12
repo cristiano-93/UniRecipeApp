@@ -17,6 +17,9 @@ const homeController = require("./controllers/home");
 const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 const userController = require("./controllers/user");
+const recipeApiController = require("./controllers/api/recipe");
+const savedRecipeController = require("./controllers/savedRecipe");
+const savedRecipeApiController = require("./controllers/api/savedRecipeApi");
 
 //connecting to the database
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -70,17 +73,26 @@ app.get("/recipe/view/:id", recipeController.view);
 app.get("/recipe/update/:id", recipeController.edit);
 app.post("/recipe/update/:id", recipeController.update);
 
-
 app.get("/create-recipe", (req, res) => {
     res.render("create-recipe", { errors: {} });
 });
 app.post("/create-recipe", recipeController.create);
+
+app.get("/search-recipe",(req, res)=>{
+    res.render('search-recipe', recipeApiController);
+});
+app.get("/saved-recipes", savedRecipeController.list);
+app.get("/api/search-recipe", recipeApiController.list);
+app.post("/api/saved-recipe/id:", savedRecipeApiController.create);
+
+app.get("api/recipe");
 
 //user login/registration
 
 app.get("/register", (req, res) => {
     res.render('create-user', { errors: {} })
 });
+
 app.post("/register", userController.create);
 
 app.get("/login", (req, res) => {

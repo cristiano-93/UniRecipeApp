@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
     try {
         const recipe = new Recipe({
             name: req.body.name,
-            n_minutes: req.body.n_minutes,
+            minutes: req.body.n_minutes,
             n_steps: req.body.n_steps,
             n_ingredients: req.body.n_ingredients,
             tags: req.body.tags.split(","),
@@ -67,34 +67,6 @@ exports.edit = async (req, res) => {
       });
     }
   };
-
-
-// exports.update = async (req, res) => {
-//     const id = req.params.id;
-//     try {
-//         const tags = await Tag.find({});
-//         const steps = await Step.find({});
-//         const ingredients = await Ingredient.find({});
-//         const recipe = await Recipes.findById(id);
-//         if (!recipe) throw Error('couldnt find recipe');
-//         res.render('update-recipe', {
-//             recipe: recipe,
-//             tags: tags,
-//             steps: steps,
-//             ingredients: ingredients,
-//             error: {}
-//         });
-//     } catch (e) {
-//         console.log(e);
-//         if (e.errors) {
-//             res.render('update-recipe', { errors: e.errors })
-//             return;
-//         }
-//         res.status(404).send({
-//             message: `could not find recipe ${id}.`,
-//         });
-//     }
-// };
 
 exports.tags = async (req, res) => {
     try {

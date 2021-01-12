@@ -19,6 +19,7 @@ exports.update = async (req, res) => {
             recipe: recipe,
             error: {}
         });
+        
     } catch (e) {
         console.log(e);
         if (e.errors) {
