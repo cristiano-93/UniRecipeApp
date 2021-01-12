@@ -1,11 +1,16 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/"> World Recipes </a>
-      <a class="nav-link" style="color: azure;" href="/recipeList"> Recipe List</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"> World Recipes </a>
+    <a class="nav-link" style="color: azure;" href="/recipeList"> Recipe List</a>
+
+    <% if(user) { %>
       <a class="nav-link" style="color: azure;" href="/create-recipe"> Create recipe</a>
-      <a class="nav-link" style="color: azure;" href="/login"> Login</a>
-      <a class="nav-link" style="color: azure;" href="/register"> Register</a>
-    </nav>
-  </header>
-  
-  
+      <a class="nav-link" href="">Welcome, <%= user.name %></a>
+      <a class="nav-link" href="logout">Logout</a>
+      <% }%>
+        <% if(!user) { %>
+          <a class="nav-link" style="color: azure;" href="/login"> Login</a>
+          <a class="nav-link" style="color: azure;" href="/register"> Register</a>
+          <% } %>
+  </nav>
+</header>
