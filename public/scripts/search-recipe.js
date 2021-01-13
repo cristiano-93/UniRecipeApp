@@ -5,7 +5,9 @@ const handleSave = async (id) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ id: id })
-    })
+        
+    });
+    console.log("handleSave id: "+id);
 };
 
 

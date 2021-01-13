@@ -63,7 +63,6 @@ const authMiddleware = async (req, res, next) => {
 // setting up the pages
 
 
-
 app.get("/", homeController.list);
 
 app.get("/recipeList", recipeListController.list);
@@ -83,7 +82,7 @@ app.get("/search-recipe",(req, res)=>{
 });
 app.get("/saved-recipes", savedRecipeController.list);
 app.get("/api/search-recipe", recipeApiController.list);
-app.post("/api/saved-recipe/id:", savedRecipeApiController.create);
+app.post("/api/savedRecipeApi", savedRecipeApiController.create);
 
 app.get("api/recipe");
 
