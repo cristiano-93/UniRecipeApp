@@ -1,16 +1,3 @@
-const handleSave = async (id) => {
-    await fetch('/api/saved-recipe', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: id })
-        
-    });
-    console.log("handleSave id: "+id);
-};
-
-
 const recipeView = (recipe) => `
   
   <div class="col-12">

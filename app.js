@@ -18,8 +18,6 @@ const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 const userController = require("./controllers/user");
 const recipeApiController = require("./controllers/api/recipe");
-const savedRecipeController = require("./controllers/savedRecipe");
-const savedRecipeApiController = require("./controllers/api/savedRecipeApi");
 
 //connecting to the database
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -80,9 +78,7 @@ app.post("/create-recipe", recipeController.create);
 app.get("/search-recipe",(req, res)=>{
     res.render('search-recipe', recipeApiController);
 });
-app.get("/saved-recipes", savedRecipeController.list);
 app.get("/api/search-recipe", recipeApiController.list);
-app.post("/api/savedRecipeApi", savedRecipeApiController.create);
 
 app.get("api/recipe");
 
