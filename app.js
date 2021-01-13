@@ -101,7 +101,7 @@ app.get("/logout", async (req, res) => {
     res.redirect('/');
 });
 
-
+app.get("/assets/logo.jpg")
 
 
 app.listen(WEB_PORT, () => {
