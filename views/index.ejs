@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uni Recipe Web App</title>
-    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -17,6 +15,12 @@
             -moz-user-select: none;
             user-select: none;
         }
+        h1{
+            padding-bottom: 25px;
+        }
+        img {
+            padding-bottom: 20px;
+        }
 
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
@@ -24,10 +28,6 @@
             }
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded",)
-    </script>
-
 </head>
 
 <body>
@@ -37,16 +37,13 @@
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
                         <h1 class="fw-light">UniRecipe</h1>
-                        <p class="lead text-muted">A simple Web app made for those who are looking for quick and easy recipes.
-                        </p>
+                        <img class="rounded mx-auto d-block" src="https://i.imgur.com/wSpT6vG.jpg" name="icon" alt="icon" >
+                        <p class="lead text-muted">A simple Web app made for those who are looking for quick and easy
+                            recipes. </p>
                         <p>
-                            <a role="button" class="btn btn-success btn-xs" href="/recipeList">recipe list</a>
-                            <a role="button" class="btn btn-success btn-xs" href="/create-recipe">create recipe page</a>
-                            <a role="button" class="btn btn-success btn-xs" href="/register">create user page</a>
-                            <a role="button" class="btn btn-success btn-xs" href="/login">user login page</a>
-                            <a role="button" class="btn btn-success btn-xs" href="/search-recipe">recipe search page</a>
+                            <p class="lead text-muted">And for a fun fact, here is the top rated recipe in the internet</p>
+                            <a role="button" class="btn btn-success btn-xs" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO')" id="bait">Internet's Top Rated Recipe</a>
                         </p>
-                        <p>Pages still need visuals</p>
                     </div>
                 </div>
             </section>

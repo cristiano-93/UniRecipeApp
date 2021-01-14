@@ -2,16 +2,16 @@ const recipeView = (recipe) => `
   
   <div class="col-12">
       <div class="card">
-          <h5 class="card-header"> ${recipe.name}</h5>   
+          <h5 class="card-header text-center"> ${recipe.name}</h5>   
           <div class="card-body">
            <p class="card-text">${recipe.description}</p>
             <ul class="list-group">
-                <li class="list-group-item">Time to make: ${recipe.n_minutes}</li>
+                <li class="list-group-item">Time to make: ${recipe.minutes}</li>
                 <li class="list-group-item">Number os Ingredients: ${recipe.n_ingredients}</li>
                 <li class="list-group-item">Number of Steps: ${recipe.n_steps}</li>
+                <a role="button" class="btn btn-success btn-xs" onclick="window.open('/recipe/view/${recipe._id}')">View Recipe</a>
             </ul>
           </div>
-          <a href="#" class="btn btn-primary" onclick="handleSave('${recipe._id}')">Save to Favorites</a>
         </div>
    </div>
   `;

@@ -8,53 +8,72 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        
+        .container{
+            display: block;
+            width: 85%;
+            padding: 20px;
+        }
+        #view{
+            background-color: cornflowerblue;
+        }
+        #edit{
+            background-color: rgb(92, 141, 92);
+        }
+        #delete{
+            background-color: tomato;
+        }
+
+    </style>
 
 </head>
 
 <body>
     <%- include('common/header'); -%>
+        <div class="container">
+            <div class="col-md-10 col-md-offset-2">
 
-        <div class="col-md-12 col-md-offset-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Minutes</th>
+                            <th scope="col">Number of Steps</th>
+                            <th scope="col">Number of Ingredients</th>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Minutes</th>
-                        <th scope="col">Number of Steps</th>
-                        <th scope="col">Number of Ingredients</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <% recipe.forEach(recipe=> {
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <% recipe.forEach(recipe=> {
-
-                            %>
-                            <td>
-                                <%= recipe.name %>
-                            </td>
-                            <td>
-                                <%= recipe.minutes %>
-                            </td>
-                            <td>
-                                <%= recipe.n_steps %>
-                            </td>
-                            <td>
-                                <%= recipe.n_ingredients %>
-                            </td>
-                            <td class="text-center">
-                                <a href="/recipe/view/<%= recipe.id %>" class='btn btn-info btn-xs'><span
-                                        class="glyphicon glyphicon-edit"></span> View</a>
-                                <a href="/recipe/update/<%= recipe.id %>" class="btn btn-info btn-xs"><span
-                                        class="glyphicon glyphicon-edit"></span> Edit</a>
-                                <a href="/recipeList/delete/<%= recipe.id %>" class="btn btn-danger btn-xs"><span
-                                        class="glyphicon glyphicon-remove"></span> Delete</a>
-                            </td>
-                    </tr>
-                    <% }); %>
-                </tbody>
-            </table>
+                                %>
+                                <td>
+                                    <%= recipe.name %>
+                                </td>
+                                <td class="text-center">
+                                    <%= recipe.minutes %>
+                                </td>
+                                <td class="text-center">
+                                    <%= recipe.n_steps %>
+                                </td>
+                                <td class="text-center">
+                                    <%= recipe.n_ingredients %>
+                                </td>
+                                <td class="text-center">
+                                    <a href="/recipe/view/<%= recipe.id %>" id="view" class='btn btn-secondary btn-xs'><span
+                                            class="glyphicon glyphicon-edit"></span> View</a>
+                                    <a href="/recipe/update/<%= recipe.id %>" id="edit" class="btn btn-secondary btn-xs"><span
+                                            class="glyphicon glyphicon-edit"></span> Edit</a>
+                                    <a href="/recipeList/delete/<%= recipe.id %>" id="delete" class="btn btn-secondary btn-xs"><span
+                                            class="glyphicon glyphicon-remove"></span> Delete</a>
+                                </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
         </div>
 </body>
 
