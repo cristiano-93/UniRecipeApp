@@ -111,5 +111,5 @@ app.get("/assets/logo.jpg")
 //         chalk.green("✓")
 //     );
 // });
-server.listen(PORT, ()=> {});
+server.listen(process.env.PORT || 2021, ()=> {});
 const server = require('http').createServer(app);
