@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const chalk = require("chalk");
 const express = require("express");
 const expressSession = require("express-session");
-const { WEB_PORT, MONGODB_URI } = process.env;
+const { PORT, MONGODB_URI } = process.env;
 const path = require("path");
 const app = express();
 const User = require("./models/User");
@@ -18,6 +18,7 @@ const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 const userController = require("./controllers/user");
 const recipeApiController = require("./controllers/api/recipe");
+const { Server } = require("http");
 
 //connecting to the database
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -104,9 +105,11 @@ app.get("/logout", async (req, res) => {
 app.get("/assets/logo.jpg")
 
 
-app.listen(WEB_PORT, () => {
-    console.log(
-        `Web App listening at http://localhost:${WEB_PORT}`,
-        chalk.green("✓")
-    );
-});
+// app.listen(PORT, () => {
+//     console.log(
+//         `Web App listening at http://localhost:${PORT}`,
+//         chalk.green("✓")
+//     );
+// });
+server.listen(PORT, ()=> {});
+const server = require('http').createServer(app);
