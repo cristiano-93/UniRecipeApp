@@ -105,11 +105,11 @@ app.get("/logout", async (req, res) => {
 app.get("/assets/logo.jpg")
 
 
-// app.listen(PORT, () => {
-//     console.log(
-//         `Web App listening at http://localhost:${PORT}`,
-//         chalk.green("✓")
-//     );
-// });
-server.listen(process.env.PORT || 2021, ()=> {});
-const server = require('http').createServer(app);
+app.listen(process.env.PORT || 2021, () => {
+    console.log(
+        `Web App listening at http://localhost:${PORT}`,
+        chalk.green("✓")
+    );
+});
+// server.listen(process.env.PORT || 2021, ()=> {});
+// const server = require('http').createServer(app);
