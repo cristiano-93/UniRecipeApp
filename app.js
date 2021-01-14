@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const chalk = require("chalk");
 const express = require("express");
 const expressSession = require("express-session");
-const { PORT, MONGODB_URI } = process.env;
+//const { PORT, MONGODB_URI } = process.env;
+const PORT = process.env.PORT || 3000;
 const path = require("path");
 const app = express();
 const User = require("./models/User");
@@ -104,12 +105,14 @@ app.get("/logout", async (req, res) => {
 
 app.get("/assets/logo.jpg")
 
+app.listen(PORT,()=> console.log('listenning on ${PORT}'));
 
-app.listen(process.env.PORT || 2021, () => {
-    console.log(
-        `Web App listening at http://localhost:${PORT}`,
-        chalk.green("✓")
-    );
-});
+
+// app.listen(process.env.PORT || 2021, () => {
+//     console.log(
+//         `Web App listening at http://localhost:${PORT}`,
+//         chalk.green("✓")
+//     );
+// });
 // server.listen(process.env.PORT || 2021, ()=> {});
 // const server = require('http').createServer(app);
