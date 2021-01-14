@@ -12,9 +12,13 @@ const User = require("./models/User");
 app.set("view engine", "ejs");
 
 //connecting
-const WEB_PORT = process.env.PORT;
-//const { PORT, MONGODB_URI } = process.env;
-server.listen(WEB_PORT, () => {});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+
+
 //controllers
 const homeController = require("./controllers/home");
 const recipeController = require("./controllers/recipe");
@@ -104,12 +108,3 @@ app.get("/logout", async (req, res) => {
     res.redirect('/');
 });
 
-
-// app.listen(process.env.PORT,() => {
-//     console.log(
-//         `Web App listening at http://localhost:${PORT}`,
-//         chalk.green("✓")
-//     );
-// });
-// server.listen(process.env.PORT || 2021, ()=> {});
-// const server = require('http').createServer(app);
