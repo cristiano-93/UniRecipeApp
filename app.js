@@ -29,8 +29,8 @@ const recipeApiController = require("./controllers/api/recipe");
 //const server = require('http').createServer(app);
 
 //connecting to the database
-mongoose.connect(config.DB,{ useNewUrlParser: true });
-//mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
+//mongoose.connect(, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on("error", (err) => {
     console.error(err);
     console.log(
