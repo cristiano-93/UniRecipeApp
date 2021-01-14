@@ -12,6 +12,7 @@ const User = require("./models/User");
 app.set("view engine", "ejs");
 
 //connecting
+const MONGODB_URI = process.env;
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
