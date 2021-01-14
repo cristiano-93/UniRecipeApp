@@ -1,5 +1,6 @@
 //Setting up the variables
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config({path: '.env'});
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const express = require("express");
@@ -28,7 +29,8 @@ const recipeApiController = require("./controllers/api/recipe");
 //const server = require('http').createServer(app);
 
 //connecting to the database
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(config.DB,{ useNewUrlParser: true });
+//mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on("error", (err) => {
     console.error(err);
     console.log(
