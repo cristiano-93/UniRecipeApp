@@ -29,7 +29,7 @@ const recipeApiController = require("./controllers/api/recipe");
 //const server = require('http').createServer(app);
 
 //connecting to the database
-mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/recipes',{ useNewUrlParser: true });
 //mongoose.connect(, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on("error", (err) => {
     console.error(err);
