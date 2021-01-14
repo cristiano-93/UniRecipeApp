@@ -4,6 +4,7 @@ exports.list = async (req, res) => {
     console.log(req.session+"req.session working");
     try {
         const totalList = await List.find({});              //.count() removed
+        console.log("await list working");
         res.render("index", {totalList: totalList})
     } catch (e) {
         console.log(e);
