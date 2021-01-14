@@ -28,14 +28,14 @@ const recipeApiController = require("./controllers/api/recipe");
 const server = require('http').createServer(app);
 
 //connecting to the database
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-mongoose.connection.on("error", (err) => {
-    console.error(err);
-    console.log(
-        "MongoDB connection error. Please make sure MongoDB is running."
-    );
-    process.exit();
-});
+// mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+// mongoose.connection.on("error", (err) => {
+//     console.error(err);
+//     console.log(
+//         "MongoDB connection error. Please make sure MongoDB is running."
+//     );
+//     process.exit();
+// });
 
 
 
