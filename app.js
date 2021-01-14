@@ -5,21 +5,24 @@ const bodyParser = require("body-parser");
 const chalk = require("chalk");
 const express = require("express");
 const expressSession = require("express-session");
-//const { PORT, MONGODB_URI } = process.env;
-const PORT = process.env.PORT || 3000;
+
+
 const path = require("path");
 const app = express();
 const User = require("./models/User");
 app.set("view engine", "ejs");
 
-
+//connecting
+const WEB_PORT = process.env.PORT;
+//const { PORT, MONGODB_URI } = process.env;
+server.listen(WEB_PORT, () => {});
 //controllers
 const homeController = require("./controllers/home");
 const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 const userController = require("./controllers/user");
 const recipeApiController = require("./controllers/api/recipe");
-const { Server } = require("http");
+const server = require('http').createServer(app);
 
 //connecting to the database
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -103,16 +106,12 @@ app.get("/logout", async (req, res) => {
     res.redirect('/');
 });
 
-app.get("/assets/logo.jpg")
 
-
-
-
-app.listen(process.env.PORT,() => {
-    console.log(
-        `Web App listening at http://localhost:${PORT}`,
-        chalk.green("✓")
-    );
-});
+// app.listen(process.env.PORT,() => {
+//     console.log(
+//         `Web App listening at http://localhost:${PORT}`,
+//         chalk.green("✓")
+//     );
+// });
 // server.listen(process.env.PORT || 2021, ()=> {});
 // const server = require('http').createServer(app);
