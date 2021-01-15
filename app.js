@@ -19,6 +19,8 @@ if (port == null || port == "") {
     port = 8000;
 }
 app.listen(port);
+console.log(
+    `Example app listening at http://localhost:${port}`);
 
 
 //controllers
@@ -27,10 +29,9 @@ const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 const userController = require("./controllers/user");
 const recipeApiController = require("./controllers/api/recipe");
-//const server = require('http').createServer(app);
 
 //connecting to the database
-mongoose.connect('mongodb+srv://admin:admin@unirecipecluster.ix1lf.mongodb.net/UniRecipes?retryWrites=true&w=majority', { useUnifiedTopology: true } );
+mongoose.connect('mongodb+srv://admin:admin@unirecipecluster.ix1lf.mongodb.net/UniRecipes?retryWrites=true&w=majority', { useNewUrlParser: true });
 //mongoose.connect(, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on("error", (err) => {
     console.error(err);
