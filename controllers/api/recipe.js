@@ -3,10 +3,6 @@ exports.list =  async (req,res) => {
     
     const searchQuery = req.query.search;
 
-    // if (!searchQuery) {
-    //     res.json(["not working"]);
-    // }
-
     try {
         const Result =  await Recipe.find(
             { $text: { $search: searchQuery}},
