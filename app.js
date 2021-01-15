@@ -1,6 +1,6 @@
 //Setting up the variables
 const dotenv = require("dotenv");
-dotenv.config({path: '.env'});
+dotenv.config({ path: '.env' });
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const express = require("express");
@@ -16,14 +16,12 @@ app.set("view engine", "ejs");
 const MONGODB_URI = process.env;
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+    port = 8000;
 }
-//app.listen(port);
-app.listen(port, () => {
-    console.log(
-      `Example app listening at http://localhost:${port}`
-    );
-  });
+app.listen(port);
+console.log(
+    `Example app listening at http://localhost:${port}`);
+
 
 //controllers
 const homeController = require("./controllers/home");
@@ -33,7 +31,7 @@ const userController = require("./controllers/user");
 const recipeApiController = require("./controllers/api/recipe");
 
 //connecting to the database
-mongoose.connect('mongodb+srv://admin:admin@unirecipecluster.ix1lf.mongodb.net/UniRecipes?retryWrites=true&w=majority',{ useNewUrlParser: true });
+mongoose.connect('mongodb+srv://admin:admin@unirecipecluster.ix1lf.mongodb.net/UniRecipes?retryWrites=true&w=majority', { useNewUrlParser: true });
 //mongoose.connect(, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on("error", (err) => {
     console.error(err);
@@ -88,7 +86,7 @@ app.get("/create-recipe", (req, res) => {
 });
 app.post("/create-recipe", recipeController.create);
 
-app.get("/search-recipe",(req, res)=>{
+app.get("/search-recipe", (req, res) => {
     res.render('search-recipe', recipeApiController);
 });
 app.get("/api/search-recipe", recipeApiController.list);
