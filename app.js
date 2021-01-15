@@ -27,6 +27,7 @@ const recipeController = require("./controllers/recipe");
 const recipeListController = require("./controllers/recipeList");
 const userController = require("./controllers/user");
 const recipeApiController = require("./controllers/api/recipe");
+//const server = require('http').createServer(app);
 
 //connecting to the database
 mongoose.connect('mongodb+srv://admin:admin@unirecipecluster.ix1lf.mongodb.net/UniRecipes?retryWrites=true&w=majority', { useNewUrlParser: true });
